@@ -1,0 +1,35 @@
+source_list:
+  -SB
+  -QL
+  -CP
+  -ADDR
+
+s3_conf:
+  s3_bucket: ketandatabucket
+  staging_loaction: staging
+
+
+SB:
+  mysql_conf:
+    dbtable: testdb.TRANSACTIONSYNC
+    partition_column: App_Transaction_Id
+    query : "(select * from testdb.TRANSACTIONSYNC) as t"
+
+
+OL:
+  sftp_conf:
+      filetype: csv
+      delimiter: |
+      directory: /home/ubuntu/data
+
+
+ADDR:
+  mongodb_config:
+    database: school
+    collection: students
+
+CP:
+  redshift_conf:
+    filetype: csv
+    delimiter: |
+
